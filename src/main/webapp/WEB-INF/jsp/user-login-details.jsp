@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="org.springframework.boot.jta.atomikos.AtomikosDataSourceBean"%>
 <%@page import="com.sani.cubic.MySpringBoot02.dto.CustomerSignup"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="com.sani.cubic.MySpringBoot02.repo.SignupStore"%>
@@ -12,17 +13,27 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<title>Signup</title>
+<title>Login User Details</title>
 </head>
+<!-- <header style="height: 30px; background-color: maroon; color: white;">
+		Hello Mr. <span th:utext="${session.userSessionVO.username}"
+			th:unless="${session == null}" style="font-weight: bold;"></span>
+	</header>
+ --> <!--  -->
 <body>
-	<header style="height: 30px; background-color: #545b62;"></header>
+	<%
+	 		CustomerSignup signup = (CustomerSignup) request.getAttribute("sData");
+	 	%>
+	<header style="height: 30px; background-color: #ffc107; ">
+		Hello Mr. <%=signup.getEmail() %>
+	</header>
 	<div class="container">
 	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ybOeJ1hAsBrFGPWMrF_FxieJ8NNWQZkqWg&usqp=CAU" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 	 <img src="images/st-one.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
 	 <hr>
 	 
 	 <hr>
-	 <h2>Signup Page</h2>
+	 <h2>You are logged in </h2>
 	 <hr>
 	 <a href="login">
 	 <button type="button" class="btn btn-danger">Login</button>
@@ -32,10 +43,8 @@
 	 <button type="button" class="btn btn-danger">Signup</button>
 	 </a>
 	 <br>
-	 	<%
-	 		List<CustomerSignup> signups = (List<CustomerSignup>)request.getAttribute("sData");
-	 	%>
-	 	<span style="color: red; font-size: 15">Total Records: <%=signups.size()%></span>
+	 	
+	 	
 	  <table class="table table-striped">
     <thead style="background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/moroccan-flower.png')">
       <tr>
@@ -51,10 +60,7 @@
       </tr>
     </thead>
     <tbody>
-    <%
-    	
-    	for(CustomerSignup signup: signups){
-    %>
+   
       <tr>
         <td><%=signup.getUsername() %></td>
         <td><%=signup.getPassword() %></td>
@@ -75,7 +81,7 @@
         </td>
       </tr>
       <%
-    	}
+    	
       %>
   
   </table>

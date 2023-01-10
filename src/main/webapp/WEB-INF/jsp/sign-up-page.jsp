@@ -26,7 +26,7 @@ hr {
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
+  background-color: #055de9;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -63,6 +63,15 @@ button:hover {
   clear: both;
   display: table;
 }
+.signupbtn, .record-btn{
+	border-radius: 12px;
+}
+.signupbtn{
+	background: #e41111;
+}
+.record-btn{
+	background: #1b8ca3;
+}
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -82,8 +91,8 @@ button:hover {
 	<label for="username"><b>User Name</b></label><br>
     <input type="text" placeholder="user name" name="username"><br>
     
-     <label for="psw"><b>Password</b></label><br>
-    <input type="password" placeholder="Enter Password" name="psw" required><br>
+     <label for="password"><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" name="password" required><br>
     
     <label for="email" ><b>Email</b></label><br>
     <input type="text" placeholder="Enter Email" name="email" required><br>
@@ -105,9 +114,9 @@ button:hover {
     <input type="text" placeholder="address" name="address"><br>
     
     
-      <button type="submit" class="signupbtn">Sign Up</button>
+      <button type="submit" class="signupbtn"  style="width: 10%">Sign Up</button>
       <a href="showAllData">
-      <button type="button" class="btn btn-primary">Show All Records</button>
+      <button type="button" class="record-btn" style="width: 10%">Show All Records</button>
       </a>
     </div>
   
